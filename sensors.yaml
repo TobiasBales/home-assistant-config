@@ -1,3 +1,5 @@
+- platform: dwd_weather_warnings
+  region_name: !secret dwd_region
 - platform: qnap
   host: !secret qnap_host
   username: !secret qnap_username
