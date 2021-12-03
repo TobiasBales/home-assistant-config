@@ -1,0 +1,9 @@
+- id: "1638343285502"
+  alias: Turn on music room lights
+  description: ""
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      motion_entity: binary_sensor.music_room_motion
+      light_target:
+        device_id: eb52fbe94800bb61995e16e63f850872
