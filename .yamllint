@@ -1,9 +1,8 @@
 ---
-ignore:
-  - automations.yaml
-  - scenes.yaml
-  - scripts.yaml
-  []
+ignore: |
+  automations.yaml
+  scenes.yaml
+  scripts.yaml
 rules:
   braces:
     level: error
