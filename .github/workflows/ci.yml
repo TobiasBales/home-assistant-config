@@ -13,6 +13,15 @@ on:
     - cron: 0 12 * * *
 
 jobs:
+  commit_lint:
+    name: Commit lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0
+      - uses: wagoid/commitlint-github-action@v4
+
   yamllint:
     name: YAML lint
     runs-on: ubuntu-latest
