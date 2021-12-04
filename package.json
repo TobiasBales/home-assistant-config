@@ -1,0 +1,16 @@
+{
+  "name": "home-assistant-config",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TobiasBales/home-assistant.git"
+  },
+  "author": "Tobias Bales <hi@tobiasbales.dev>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0"
+  }
+}
