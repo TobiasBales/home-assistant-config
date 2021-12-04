@@ -13,3 +13,4 @@ known_devices.yaml
 home-assistant_v2.db*
 zigbee.db
 __pycache__
+/node_modules
