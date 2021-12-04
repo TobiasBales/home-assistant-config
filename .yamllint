@@ -3,6 +3,7 @@ ignore: |
   automations.yaml
   scenes.yaml
   scripts.yaml
+  custom_components/*/
 rules:
   braces:
     level: error
