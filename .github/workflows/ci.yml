@@ -1,0 +1,52 @@
+---
+name: CI
+
+# yamllint disable-line rule:truthy
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: 0 12 * * *
+
+jobs:
+  yamllint:
+    name: YAML lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out configuration from GitHub
+        uses: actions/checkout@v2.4.0
+      - name: Run yamllint
+        uses: frenck/action-yamllint@v1.1.1
+
+  remarklint:
+    name: Remark lint
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Check out configuration from GitHub
+        uses: actions/checkout@v2.4.0
+      - name: Running Remark lint
+        uses: "docker://pipelinecomponents/remark-lint:latest"
+        continue-on-error: true
+        with:
+          args: "remark --no-stdout --color --frail --use preset-lint-recommended ."
+
+  home-assistant:
+    name: "Home Assistant Core ${{ matrix.version }} Configuration Check"
+    needs: [yamllint]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ["stable", "beta", "dev"]
+    steps:
+      - name: Check out configuration from GitHub
+        uses: actions/checkout@v2.4.0
+      - name: Run Home Assistant Configuration Check
+        uses: frenck/action-home-assistant@v1.1.1
+        with:
+          path: "./"
+          secrets: ./.stubs/secrets.yaml
+          version: "${{ matrix.version }}"
